@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Mujeeb Khan | Flutter Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --clr-primary: #20222c;
+            --clr-secondary: #272936;
+            --clr-accent: #fc4a1a;
+            --clr-accent2: #f7b733;
+            --clr-light: #fff;
+            --clr-muted: #b8b8b8;
+            --clr-card-dark: #23242b;
+            --clr-shadow: 0 10px 36px 0 rgba(252, 74, 26, 0.09);
+            --clr-shadow-hover: 0 0 100px #fc4a1a66;
+            --clr-shadow-img: 0 8px 40px #fc4a1a28;
+            --radius: 2.2rem;
+            --transition: .25s cubic-bezier(.4, 0, .2, 1);
+            --clr-primary-light: #f6fafd;
+            --clr-secondary-light: #fff;
+            --clr-card-light: #fff;
+            --clr-muted-light: #444;
+            --clr-navbar-link-light: #20222c;
+            --clr-border-light: #eaeaea;
+            --clr-project-card-hover-light: #fff7f0;
+            --clr-project-link-hover-light: #fc4a1a;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Montserrat', sans-serif;
+            background: var(--clr-primary);
+            color: var(--clr-light);
+            min-height: 100vh;
+            line-height: 1.65;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        body.light {
+            background: var(--clr-primary-light);
+            color: #23242b;
+        }
+
+        body.light header,
+        body.light .navbar-main {
+            background: var(--clr-secondary-light);
+            color: #23242b;
+        }
+
+        body.light .navbar-brand,
+        body.light .about-title,
+        body.light .project-title,
+        body.light .projects-title {
+            color: var(--clr-accent);
+        }
+
+        body.light .navbar-links a {
+            color: var(--clr-navbar-link-light);
+        }
+
+        body.light .navbar-links a.active,
+        body.light .navbar-links a:hover,
+        body.light .navbar-links a:focus {
+            background: var(--clr-accent2);
+            color: #fff;
+        }
+
+        body.light .about-section,
+        body.light .project-card {
+            background: var(--clr-card-light);
+            color: #23242b;
+        }
+
+        body.light .about-item i,
+        body.light .realistic-socials a {
+            color: var(--clr-accent);
+        }
+
+        body.light .about-item {
+            color: #23242b;
+        }
+
+        body.light .about-stat-label {
+            color: var(--clr-muted-light);
+        }
+
+        body.light .project-card {
+            border-color: var(--clr-border-light);
+            color: #23242b;
+        }
+
+        body.light .project-card .project-title {
+            color: var(--clr-accent);
+        }
+
+        body.light .project-card .project-desc {
+            color: var(--clr-muted-light);
+        }
+
+        body.light .project-card:hover,
+        body.light .project-card:focus {
+            background: var(--clr-project-card-hover-light);
+            color: #23242b;
+            border-color: var(--clr-accent2);
+        }
+
+        body.light .project-card a {
+            color: var(--clr-accent2);
+        }
+
+        body.light .project-card a:hover,
+        body.light .project-card a:focus {
+            color: var(--clr-project-link-hover-light);
+        }
+
+        body.light .hero-img-bg {
+            background: radial-gradient(circle, #fc4a1a33 0%, #fff 70%);
+        }
+
+        body.light .realistic-socials a {
+            background: #fff;
+            color: var(--clr-accent);
+            border: 1px solid #ececec;
+        }
+
+        body.light .realistic-socials a.github {
+            background: #f5f5f5;
+            color: #23272a;
+        }
+
+        body.light .realistic-socials a.linkedin {
+            background: #ecf5fe;
+            color: #0A66C2;
+        }
+
+        body.light .realistic-socials a.instagram {
+            background: linear-gradient(90deg, #ffe4f0 0%, #fff2e6 100%);
+            color: #E1306C;
+        }
+
+        body.light .realistic-socials a:hover,
+        body.light .realistic-socials a:focus {
+            background: var(--clr-accent2);
+            color: #fff;
+        }
+
+        body.light .about-section {
+            box-shadow: 0 10px 36px 0 #fc4a1a13;
+        }
+
+        body.light .hero-img {
+            border: 6px solid #fff;
+            background: #fff;
+        }
+
+        body.light footer {
+            color: var(--clr-muted-light);
+        }
+
+        header {
+            background: var(--clr-secondary);
+            box-shadow: 0 3px 32px #fc4a1a14;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .navbar-main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.3rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--clr-accent);
+            letter-spacing: 2px;
+            transition: color var(--transition);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-links a {
+            color: var(--clr-light);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            transition: background var(--transition), color var(--transition);
+            text-decoration: none;
+        }
+
+        .navbar-links a.active,
+        .navbar-links a:hover,
+        .navbar-links a:focus {
+            background: var(--clr-accent);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .toggle {
+            background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent2));
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            margin-left: 1.4rem;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+            box-shadow: 0 8px 28px #fc4a1a48, 0 2px 16px #fc4a1a18;
+            text-decoration: none;
+        }
+
+        .toggle:hover,
+        .toggle:focus {
+            background: linear-gradient(90deg, var(--clr-accent2), var(--clr-accent));
+            color: var(--clr-primary);
+            outline: none;
+            text-decoration: none;
+            box-shadow: 0 16px 56px #fc4a1a99, 0 2px 16px #fc4a1a18;
+        }
+
+        .hero-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 2.5rem 2.5rem 0 2.5rem;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1 1 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-greet {
+            color: var(--clr-muted);
+            font-size: 1.04rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-role {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--clr-accent2);
+            margin-bottom: 2.3rem;
+        }
+
+        .hero-btns {
+            margin-bottom: 2.2rem;
+            display: flex;
+            gap: 1.1rem;
+        }
+
+        .hero-btn {
+            background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent2));
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.04rem;
+            padding: 0.77rem 1.7rem;
+            cursor: pointer;
+            transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+            box-shadow: 0 8px 28px #fc4a1a48, 0 4px 16px #fc4a1a22;
+            text-decoration: none;
+            outline: none;
+            display: inline-block;
+        }
+
+        .hero-btn.secondary {
+            background: none;
+            color: var(--clr-accent2);
+            border: 2px solid var(--clr-accent2);
+            box-shadow: none;
+        }
+
+        .hero-btn:hover,
+        .hero-btn:focus {
+            background: linear-gradient(90deg, var(--clr-accent2), var(--clr-accent));
+            color: #fff;
+            transform: scale(1.04) translateY(-2px);
+            outline: none;
+            box-shadow: 0 16px 56px #fc4a1a99, 0 4px 16px #fc4a1a22;
+        }
+
+        .hero-btn.secondary:hover,
+        .hero-btn.secondary:focus {
+            background: var(--clr-accent2);
+            color: #20222c;
+            border-color: var(--clr-accent2);
+        }
+
+        .hero-img-wrap {
+            flex: 1 1 240px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-width: 140px;
+        }
+
+        .hero-img-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, #fc4a1a33 0%, #23242b 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 3s infinite alternate;
+            box-shadow: 0 0 60px #fc4a1a44;
+            transition: background var(--transition);
+        }
+
+        .hero-img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            border: 6px solid #23242b;
+            z-index: 2;
+            background: #23242b;
+            box-shadow: var(--clr-shadow-img);
+            transition:
+                transform 0.35s cubic-bezier(.4, 0, .2, 1),
+                box-shadow 0.35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .hero-img:hover,
+        .hero-img:focus {
+            transform: scale(1.07) rotate(-2deg);
+            box-shadow: 0 16px 56px #fc4a1a99, 0 0 80px #fc4a1a55;
+        }
+
+        @keyframes pulse {
+            to {
+                box-shadow: 0 0 100px #fc4a1a55;
+            }
+        }
+
+        .about-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+            background: var(--clr-card-dark);
+            border-radius: 1.8rem;
+            box-shadow: var(--clr-shadow);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.2rem;
+            justify-content: space-between;
+        }
+
+        .about-left {
+            flex: 2 1 340px;
+            min-width: 220px;
+        }
+
+        .about-right {
+            flex: 1 1 220px;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            justify-content: flex-end;
+        }
+
+        .about-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--clr-accent2);
+            margin-bottom: 1rem;
+            letter-spacing: 1.2px;
+        }
+
+        .about-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-item {
+            display: flex;
+            gap: 0.9rem;
+            align-items: center;
+            font-size: 1.05rem;
+            color: var(--clr-light);
+        }
+
+        .about-item i {
+            color: var(--clr-accent2);
+            font-size: 1.2rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2.2rem;
+            margin-top: 1.2rem;
+        }
+
+        .about-stat {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--clr-accent2);
+        }
+
+        .about-stat-label {
+            display: block;
+            font-size: 0.98rem;
+            font-weight: 400;
+            color: var(--clr-muted);
+        }
+
+        .projects-section {
+            max-width: 1100px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 2.5vw;
+        }
+
+        .projects-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--clr-accent2);
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1.1px;
+        }
+
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--clr-card-dark);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 34px #fc4a1a12;
+            padding: 1.5rem 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            border: 2px solid #23242b;
+            min-width: 0;
+            transition: transform .2s, box-shadow .2s, background .2s, color .2s, border-color .2s;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+
+        .project-card:hover,
+        .project-card:focus {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 16px 44px #fc4a1a25;
+            background: linear-gradient(90deg, #fc4a1a14 0%, #23242b 100%);
+            border-color: var(--clr-accent);
+        }
+
+        .project-card i {
+            font-size: 2rem;
+            color: var(--clr-accent2);
+        }
+
+        .project-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: var(--clr-accent2);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .project-desc {
+            font-size: 0.98rem;
+            color: var(--clr-muted);
+        }
+
+        .project-card a {
+            margin-top: 0.2rem;
+            color: var(--clr-accent2);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.01rem;
+            transition: color .2s, text-decoration .2s;
+        }
+
+        .project-card a:hover,
+        .project-card a:focus {
+            color: var(--clr-accent);
+            text-decoration: underline;
+        }
+
+        .socials-section {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            padding: 1.5rem 2.5vw 0.5rem 2.5vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .socials-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--clr-accent2);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .realistic-socials {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .realistic-socials a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.07rem;
+            font-weight: 700;
+            background: #24262d;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            box-shadow: 0 8px 28px #fc4a1a48, 0 2px 16px #fc4a1a18;
+            transition: background 0.2s, color 0.2s, transform 0.18s, box-shadow 0.2s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .realistic-socials a i {
+            font-size: 1.5rem;
+        }
+
+        .realistic-socials a.github {
+            background: #23272a;
+        }
+
+        .realistic-socials a.linkedin {
+            background: #0A66C2;
+        }
+
+        .realistic-socials a.instagram {
+            background: linear-gradient(90deg, #E1306C 0%, #fc4a1a 100%);
+        }
+
+        .realistic-socials a:hover,
+        .realistic-socials a:focus {
+            filter: brightness(1.13);
+            transform: scale(1.07);
+            color: #fff;
+            outline: none;
+            text-decoration: none;
+            box-shadow: 0 16px 56px #fc4a1a99, 0 2px 16px #fc4a1a18;
+        }
+
+        body.light .realistic-socials a {
+            background: #fff;
+            color: var(--clr-accent);
+            border: 1px solid #ececec;
+        }
+
+        body.light .realistic-socials a.github {
+            background: #f5f5f5;
+            color: #23272a;
+        }
+
+        body.light .realistic-socials a.linkedin {
+            background: #ecf5fe;
+            color: #0A66C2;
+        }
+
+        body.light .realistic-socials a.instagram {
+            background: linear-gradient(90deg, #ffe4f0 0%, #fff2e6 100%);
+            color: #E1306C;
+        }
+
+        body.light .realistic-socials a:hover,
+        body.light .realistic-socials a:focus {
+            background: var(--clr-accent2);
+            color: #fff;
+            box-shadow: 0 16px 56px #fc4a1a99, 0 2px 16px #fc4a1a18;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.7rem 1rem 2.2rem;
+            font-size: 1rem;
+            opacity: 0.7;
+            color: var(--clr-muted);
+            font-family: 'Inter', 'Montserrat', sans-serif;
+            user-select: none;
+            letter-spacing: 1.1px;
+        }
+
+        body.light footer {
+            color: var(--clr-muted-light);
+        }
+
+        @media (max-width: 1000px) {
+
+            .navbar-main,
+            .hero-section,
+            .about-section,
+            .projects-section,
+            .socials-section {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+
+            .hero-section {
+                flex-direction: row;
+                gap: 1.9rem;
+            }
+
+            .about-section {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .hero-section {
+                flex-direction: row;
+                gap: 1rem;
+                padding: 1.2rem 0.5rem 0 0.5rem;
+            }
+
+            .hero-img-wrap {
+                min-width: 70px;
+                max-width: 90px;
+                flex: 0 0 90px;
+            }
+
+            .hero-img-bg {
+                width: 90px;
+                height: 90px;
+            }
+
+            .hero-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .hero-content {
+                font-size: 0.98rem;
+            }
+
+            .hero-title {
+                font-size: 1.07rem;
+            }
+
+            .hero-role {
+                font-size: 0.97rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .navbar-main {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.7rem 0.4rem;
+            }
+
+            .hero-section,
+            .about-section,
+            .projects-section,
+            .socials-section {
+                padding: 0.8rem 0.8rem 0 0.8rem;
+            }
+
+            .hero-section {
+                flex-direction: row;
+                gap: 0.7rem;
+            }
+
+            .about-section {
+                border-radius: 1.1rem;
+            }
+
+            .project-card {
+                min-width: 90vw;
+                max-width: 100vw;
+                border-radius: 1.1rem;
+                padding: 1rem 0.7rem;
+                font-size: 0.96rem;
+            }
+
+            .projects-list {
+                grid-template-columns: 1fr;
+            }
+
+            .realistic-socials {
+                flex-direction: column;
+                gap: 1.1rem;
+            }
+
+            .about-left,
+            .about-right {
+                min-width: 0;
+            }
+
+            .about-right {
+                flex-direction: row;
+                gap: 1.3rem;
+                justify-content: flex-start;
+                margin-top: 1rem;
+            }
+
+            .about-section {
+                padding: 1.4rem 0.7rem;
+            }
+
+            .navbar-links {
+                gap: 1.1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-img-bg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hero-img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar-main">
+            <span class="navbar-brand">Mujeeb Khan</span>
+            <nav class="navbar-links">
+                <a href="#" class="active">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" id="contact-link">Contact</a>
+            </nav>
+            <button class="toggle" aria-label="Toggle dark/light theme" id="theme-toggle-btn">Dark Mode</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-greet">Hello,</div>
+            <div class="hero-title">I'm Mujeeb Khan</div>
+            <div class="hero-role">Flutter Developer</div>
+            <div class="hero-btns">
+                <a href="#projects" class="hero-btn">See Projects</a>
+                <a href="#contact" class="hero-btn secondary">Contact</a>
+            </div>
+        </div>
+        <div class="hero-img-wrap">
+            <div class="hero-img-bg"></div>
+            <img src="assets/images/img2.jpg" alt="Mujeeb Khan Photo" class="hero-img" tabindex="0" />
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-left">
+            <div class="about-title">About me</div>
+            <div class="about-list">
+                <div class="about-item"><i class="fas fa-mobile-alt"></i>Mobile App Development</div>
+                <div class="about-item"><i class="fas fa-lightbulb"></i>Creative Solutions</div>
+                <div class="about-item"><i class="fas fa-users"></i>Supportive Community</div>
+            </div>
+            <div style="color:var(--clr-muted); font-size:1.03rem;">
+                I am an eager Flutter developer seeking a fresher role to apply and enhance my skills in mobile app
+                development.
+                Excited to contribute creative solutions and learn from experienced professionals while collaborating on
+                innovative app projects.
+            </div>
+        </div>
+        <div class="about-right">
+            <div class="about-stats">
+                <div>
+                    <span class="about-stat">120+</span>
+                    <span class="about-stat-label">Hours Coded</span>
+                </div>
+                <div>
+                    <span class="about-stat">100%</span>
+                    <span class="about-stat-label">Live Projects</span>
+                </div>
+                <div>
+                    <span class="about-stat">10+</span>
+                    <span class="about-stat-label">Skills</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="projects-title">Projects</div>
+        <div class="projects-list">
+            <div class="project-card" data-url="https://atmosiqbymujeeb.netlify.app/">
+                <i class="fas fa-cloud-sun-rain"></i>
+                <div class="project-title">Atmosiq</div>
+                <div class="project-desc">A Flutter app showing live weather, using beautiful animations and API
+                    integration for real-time updates.</div>
+                <a href="https://atmosiqbymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card" data-url="https://knotiquebyhadiya.netlify.app/">
+                <i class="fas fa-store"></i>
+                <div class="project-title">Knotique (E-Commerce)</div>
+                <div class="project-desc">A full-featured e-commerce app built with Flutter, supporting authentication,
+                    cart, and smooth UI.</div>
+                <a href="https://knotiquebyhadiya.netlify.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card" data-url="https://chitchatbymujeeb.netlify.app/">
+                <i class="fas fa-comments"></i>
+                <div class="project-title">Chit Chat</div>
+                <div class="project-desc">A real-time chat app with Firebase backend, supporting user authentication and
+                    instant messaging.</div>
+                <a href="https://chitchatbymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card" data-url="https://meelatobymujeeb.netlify.app/">
+                <i class="fas fa-boxes-stacked"></i>
+                <div class="project-title">Meelato</div>
+                <div class="project-desc">Meelato Admin Panel empowers you to take full control of your inventory with a
+                    clean, intuitive interface built for speed and accuracy. </div>
+                <a href="https://meelatobymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card" data-url="https://corowatchbymujeeb.netlify.app/">
+                <i class="fas fa-virus"></i>
+                <div class="project-title">CoroWatch</div>
+                <div class="project-desc">Track COVID-19 cases worldwide with real-time data. Search countries and get
+                    details about total cases, deaths, and recoveries.</div>
+                <a href="https://corowatchbymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+            <div class="project-card" data-url="https://wallixbymujeeb.netlify.app/">
+                <i class="fas fa-image"></i>
+                <div class="project-title">Wallix</div>
+                <div class="project-desc">Search wallpapers by keyword, Download HD wallpapers directly to your phone.
+                    Explore categories like Nature, Art, Coding & more</div>
+                <a href="https://wallixbymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+
+            <div class="project-card" data-url="https://genscanbymujeeb.netlify.app/">
+                
+                <i class="fas fa-qrcode"></i>
+                <div class="project-title">GenScan</div>
+                <div class="project-desc"> GenScan is your ultimate tool for sharing, saving and scanning information with QR codes. 
+                    Built with care for speed and simplicity, it’s perfect for everyday use. </div>
+                <a href="https://genscanbymujeeb.netlify.app/" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials Section -->
+    <section class="socials-section" id="contact" aria-label="Social Media Links">
+        <div class="socials-title">Connect with me</div>
+        <div class="realistic-socials">
+            <a href="https://github.com/Mujeebkhan-it" class="github" aria-label="GitHub Profile" target="_blank"
+                rel="noopener noreferrer">
+                <i class="fab fa-github"></i> <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/mujeeb-khan-pathan/" class="linkedin" aria-label="LinkedIn Profile"
+                target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/mujeeb_khan._/" class="instagram" aria-label="Instagram Profile"
+                target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i> <span>Instagram</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 Mujeeb Khan. All rights reserved.
+    </footer>
+
+    <script>
+        // Theme toggle: store preference in localStorage
+        const toggleButton = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        function setTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light');
+                toggleButton.textContent = 'Dark Mode';
+            } else {
+                body.classList.remove('light');
+                toggleButton.textContent = 'Light Mode';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            setTheme(savedTheme === 'light' ? 'light' : 'dark');
+            // Theme toggle event
+            toggleButton.addEventListener('click', () => {
+                if (body.classList.contains('light')) {
+                    setTheme('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    setTheme('light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            // Smooth scroll to contact/socials section for navbar and hero button
+            document.querySelectorAll('a[href="#contact"]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            // Make full project-card clickable (ontap event)
+            document.querySelectorAll('.project-card').forEach(function (card) {
+                card.addEventListener('click', function (e) {
+                    // Do not trigger if click is on a link inside
+                    if (e.target.tagName === 'A') return;
+                    const url = card.getAttribute('data-url');
+                    if (url) window.open(url, '_blank');
+                });
+                card.addEventListener('keypress', function (e) {
+                    if ((e.key === 'Enter' || e.key === ' ') && card.getAttribute('data-url')) {
+                        window.open(card.getAttribute('data-url'), '_blank');
+                    }
+                });
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', card.querySelector('.project-title').innerText + ' Project');
+            });
+        });
+    </script>
+</body>
+
+</html>
